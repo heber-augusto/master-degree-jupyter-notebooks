@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-    database:
-        image: store/oracle/database-enterprise:12.2.0.1
-        volumes:
-            - ./.docker/oradata:/opt/oracle/oradata # persistent oracle database data.
-        ports:
-            - 1521:1521
-            - 8080:8080
-            - 5500:5500
-        networks: 
-            - app-network
-        container_name: database
+    #database:
+    #    image: store/oracle/database-enterprise:12.2.0.1
+    #    volumes:
+    #        - ./.docker/oradata:/opt/oracle/oradata # persistent oracle database data.
+    #    ports:
+    #        - 1521:1521
+    #        - 8080:8080
+    #        - 5500:5500
+    #    networks: 
+    #        - app-network
+    #    container_name: database
 
     notebook:
         #image: jupyter/scipy-notebook:2c80cf3537ca
@@ -21,6 +21,7 @@ services:
             - 8888:8888
         volumes:
             - ./notebooks:/home/jovyan/work
+            - ./.docker/notebook/tmp:/tmp
         networks: 
             - app-network
         container_name: notebook
